@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+
+.button-submit {
+  display: inline-block;
+}
+
+.idea-item {
+  height: 60px;
+}

@@ -49,12 +49,38 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Ideas</h3>
+        <h3 class="panel-title">
+          Ideas
+          <div class="pull-right">
+            Vote count
+          </div>
+        </h3>
       </div>
       <ul class="list-group">
         <% @event.ideas.each do |idea| %>
-          <li class="list-group-item">
+          <li class="list-group-item idea-item">
             <%= idea.name %>
+            <% if @event.votes.where(user_id: current_user.id).present? %>
+              <% vote = Vote.where(user_id: current_user.id, idea_id: idea.id).first %>
+              <% if vote %>
+                <%= link_to(vote, {method: :delete, class: 'btn btn-danger btn-sm'}) do %>
+                  <i class="fa fa fa-times"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= form_for(@vote, html: {class: 'button-submit'}) do |f| -%>
+                <%= f.hidden_field :idea_id, value: idea.id %>
+                <button class="btn btn-default">
+                  <i class="fa fa-thumbs-o-up"></i>
+                </button>
+              <% end %>
+            <% end %>
+            <div class="pull-right">
+
+            </div>
+            <% if idea.votes.present? %>
+              <span class="badge"><%= idea.votes.count %></span>
+            <% end %>
           </li>
         <% end %>
       </ul>

@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @idea = Idea.new
+    @vote = Vote.new
   end
 
   # GET /events/new
