@@ -1,5 +1,12 @@
 <%= simple_form_for(@vote) do |f| %>
   <%= f.error_notification %>
+  <% if @vote.errors.messages[:custom].present? %>
+    <ul class="error_messages_container">
+    <% @vote.errors.messages[:custom].each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
 
   <div class="form-inputs">
     <%= f.input :user_id %>
