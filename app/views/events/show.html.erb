@@ -66,11 +66,12 @@
                   Your idea <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Destroy</a></li>
+
+                  <!-- make this destroy link remove the row through javascript -->
+                  <li><a data-remote="true" data-method="delete" href="<%= idea_url(idea) %>">Destroy</a></li>
                   <li><a href="#">Edit</a></li>
                 </ul>
               </div>
-
             <% end %>
             <%= idea.name %>
             <% if @event.votes.where(user_id: current_user.id).present? %>
