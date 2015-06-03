@@ -58,7 +58,7 @@
       </div>
       <ul class="list-group">
         <% @event.ideas.each do |idea| %>
-          <li class="list-group-item idea-item">
+          <li id='idea_<%= idea.id %>' class="list-group-item idea-item">
             <!-- Single button -->
             <% if current_user.id == idea.creator_id %>
               <div class="btn-group">
