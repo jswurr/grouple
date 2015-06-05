@@ -19,6 +19,10 @@ class IdeasController < ApplicationController
 
   # GET /ideas/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST /ideas
@@ -46,6 +50,7 @@ class IdeasController < ApplicationController
       if @idea.update(idea_params)
         format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
         format.json { render :show, status: :ok, location: @idea }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @idea.errors, status: :unprocessable_entity }

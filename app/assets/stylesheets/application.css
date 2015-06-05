@@ -14,6 +14,9 @@
  *= require_self
  */
 
+.idea-form {
+  display: inline-block;
+}
 
 .button-submit {
   display: inline-block;

@@ -13,7 +13,7 @@
       </ul>
     </div>
   <% end %>
-  <span class="idea_text"><%= idea.name %><span>
+  <span class="idea_text"><%= idea.name %></span>
   <% if event.votes.where(user_id: current_user.id).present? %>
     <% vote = Vote.where(user_id: current_user.id, idea_id: idea.id).first %>
     <% if vote %>
