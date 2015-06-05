@@ -57,7 +57,7 @@
         </h3>
       </div>
       <ul class="list-group">
-        <% @event.ideas.each do |idea| %>
+        <% @event.ideas.order(created_at: :desc).each do |idea| %>
           <%= render 'event_idea', {idea: idea, event: @event, vote: @vote} %>
         <% end %>
       </ul>

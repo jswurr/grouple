@@ -1,2 +1,2 @@
-$('ul.list-group').append('<%= j(render('events/event_idea', {idea: @idea, event: @idea.event, vote: Vote.new })) %>');
+$('ul.list-group').prepend('<%= j(render('events/event_idea', {idea: @idea, event: @idea.event, vote: Vote.new })) %>');
 $('#idea_name').val('');
