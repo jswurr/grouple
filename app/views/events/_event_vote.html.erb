@@ -1,0 +1,6 @@
+<%= form_for(vote, html: {class: 'button-submit'}, remote: true) do |f| -%>
+  <%= f.hidden_field :idea_id, value: idea.id %>
+  <button class="btn btn-default">
+    <i class="fa fa-thumbs-o-up"></i>
+  </button>
+<% end %>

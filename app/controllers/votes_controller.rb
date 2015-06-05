@@ -31,6 +31,7 @@ class VotesController < ApplicationController
       if @vote.save
         format.html { redirect_to :back, notice: 'Vote was successfully created.' }
         format.json { render :show, status: :created, location: @vote }
+        format.js
       else
         # format.html { render :new }
         format.html { redirect_to :back, alert: 'There was an error creating your vote' }
@@ -60,6 +61,7 @@ class VotesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Vote was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

@@ -9,25 +9,20 @@
 
         <!-- make this destroy link remove the row through javascript -->
         <li><a data-remote="true" data-method="delete" href="<%= idea_url(idea) %>">Destroy</a></li>
-        <li><a href="#">Edit</a></li>
+        <li><a data-remote="true" href="<%= edit_idea_url(idea) %>">Edit</a></li>
       </ul>
     </div>
   <% end %>
-  <%= idea.name %>
+  <span class="idea_text"><%= idea.name %><span>
   <% if event.votes.where(user_id: current_user.id).present? %>
     <% vote = Vote.where(user_id: current_user.id, idea_id: idea.id).first %>
     <% if vote %>
-      <%= link_to(vote, {method: :delete, class: 'btn btn-danger btn-sm'}) do %>
+      <%= link_to(vote, {method: :delete, class: 'btn btn-danger btn-sm', remote: true}) do %>
         <i class="fa fa fa-times"></i>
       <% end %>
     <% end %>
   <% else %>
-    <%= form_for(vote, html: {class: 'button-submit'}) do |f| -%>
-      <%= f.hidden_field :idea_id, value: idea.id %>
-      <button class="btn btn-default">
-        <i class="fa fa-thumbs-o-up"></i>
-      </button>
-    <% end %>
+    <%= render 'events/event_vote', {vote: Vote.new, idea: idea} %>
   <% end %>
   <div class="pull-right">
 

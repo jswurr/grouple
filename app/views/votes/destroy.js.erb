@@ -1,0 +1,5 @@
+<% @vote.idea.event.ideas.each do |idea| %>
+  $('#idea_<%= idea.id %>').append("<%= j(render 'events/event_vote', {vote: Vote.new, idea: idea}) %>")
+<% end %>
+
+$('#idea_<%= @vote.idea_id %>').replaceWith('<%= j(render 'events/event_idea', {idea: @vote.idea, event: @vote.idea.event, vote: Vote.new} ) %>');
